@@ -7,7 +7,7 @@ st.title(':yarn: :orange[knittingmachine]')
 st.subheader('A simple, light and clean UI to write threads')
 
 # Create a thread label input to be used as file name
-file_name = st.text_input('Thread label', placeholder='(avoid spaces)')
+file_name = st.text_input('Thread label', placeholder='*avoid spaces')
 
 # Initialize 'n' in session state if it's not already set
 if 'n' not in st.session_state:
@@ -41,7 +41,7 @@ for i in range(st.session_state.n):
     saved_thread.append(formatted_text)
 
 # Button to add new text area
-st.button('Add', type='primary', on_click=add_text_area)
+st.button('Add to thread', type='primary', on_click=add_text_area)
 
 # Define functionality to save thread to a .txt file
 def thread_to_txt(file_name, saved_thread):
