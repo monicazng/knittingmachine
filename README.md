@@ -8,7 +8,7 @@ I enjoy writing threads more than single posts because it lets me develop storyt
 ## Features
 * Add subsequent text areas to your thread
 * Text areas feature character count with a color warning when you exceed the 280 character limit
-* Save your thread locally as a `thread_label.txt` file
+* Automatically save and update your thread as a `thread_label.txt` local file
 
 ## Installing knittingmachine
 
@@ -39,14 +39,12 @@ Regardless of which package management tool you're using, I recommend running th
     `streamlit run app.py`
     A new tab in your web browser should pop up running knittingmachine locally!
 
-Remember that this is app runs locally on your computer. With the current implementation, threads are stored in the session state and you'll lose the content if you refresh the page.
-
-To save the thread, click the `Save thread` button. This will check whether or not there's a `threads/` folder in your project directory, create one if it doesn't exist, and save your thread as a `thread_label.txt` file. You can continue editing via the app during the same session and click `Save thread` to update the files with the changes. 
+Remember that this is app runs locally on your computer. 
 
 ## Roadmap
 
 ### Immediate improvements
-- [ ] Save thread using the `text_area` `on_change` variable instead of using the `Save thread` button
+- [X] Save thread using the `text_area` `on_change` variable instead of using the `Save thread` button
 - [ ] Character count: add emoji count exception
 - [ ] Character count: add URL count exception
 - [ ] Add sidemenu navigation for saved threads

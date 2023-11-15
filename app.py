@@ -32,17 +32,6 @@ def add_text_area():
 # Create a variable to store the text from each text area
 saved_thread = []
 
-# Loop to display text areas, update their text, and saved it to saved_thread
-for i in range(st.session_state.n):
-    text = st.session_state.thread_content[i]
-    text = st.text_area(f'{i+1}', placeholder='What\'s in your mind?', value=text, key=f't{i+1}')
-    display_count(text)
-    formatted_text = f'{i+1}: {text} - {len(text)} chars.'
-    saved_thread.append(formatted_text)
-
-# Button to add new text area
-st.button('Add to thread', type='primary', on_click=add_text_area)
-
 # Define functionality to save thread to a .txt file
 def thread_to_txt(file_name, saved_thread):
     if not os.path.exists('threads'):
@@ -55,7 +44,13 @@ def thread_to_txt(file_name, saved_thread):
     with open(f'threads/{file_name}.txt', 'w') as file:
         file.write(file_content)
 
-# Button to save thread as .txt file
-if st.button('Save thread'):
-    thread_to_txt(file_name, saved_thread)
-    st.success('Thread saved successfully to your threads directory!')
+# Loop to display text areas, update their text, and saved it to saved_thread
+for i in range(st.session_state.n):
+    text = st.session_state.thread_content[i]
+    text = st.text_area(f'{i+1}', placeholder='What\'s in your mind?', value=text, key=f't{i+1}', on_change=thread_to_txt, args=(file_name, saved_thread))
+    display_count(text)
+    formatted_text = f'{i+1}: {text} - {len(text)} chars.'
+    saved_thread.append(formatted_text)
+
+# Button to add new text area
+st.button('Add to thread', type='primary', on_click=add_text_area)
