@@ -1,5 +1,6 @@
 import streamlit as st
 import os
+import re
 
 # Set page configuration
 st.set_page_config(page_icon='🧶', page_title='knittingmachine')
@@ -19,7 +20,21 @@ if 'thread_content' not in st.session_state:
 
 # Define functionality for character count
 def display_count(text):
-    chars = len(text)
+    # Count URLs as 23 characters
+    url_regex = r'https?://\S+'
+    urls = re.findall(url_regex, text)
+    url_count = 23 * len(urls)
+    
+    # Remove URLs from text to avoid double counting
+    text_without_urls = re.sub(url_regex, '', text)
+    
+    # Count characters, treating each emoji as 2 characters
+    chars = sum(2 if ord(c) > 0xffff else 1 for c in text_without_urls)
+    
+    # Add URL count
+    chars += url_count
+    
+    # Display formatted character count
     if chars <= 280:
         st.write(f'Length: {chars} characters.')
     else:
@@ -73,5 +88,5 @@ st.button('\+ Text', type='primary', on_click=add_text_area)
 st.write('''
     🪡 __Tips__
     * Replace spaces for '-' or '_' in your thread label to avoid formatting problems when saving your thread as a file
-    * Replace URLs for 'LINK' to help :orange[knittingmachine] update the character count correctly
+    * Type URLs with 'http' or 'https' to help :orange[knittingmachine] update the character count correctly
     ''')

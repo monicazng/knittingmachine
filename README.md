@@ -45,8 +45,8 @@ Remember that this is app runs locally on your computer.
 
 ### Immediate improvements
 - [X] Save thread using the `text_area` `on_change` variable instead of using the `Save thread` button
-- [ ] Character count: add emoji count exception
-- [ ] Character count: add URL count exception
+- [X] Character count: add emoji count exception
+- [X] Character count: add URL count exception
 - [ ] Add sidemenu navigation for saved threads
 
 ### Future improvements
