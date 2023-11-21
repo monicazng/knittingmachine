@@ -16,9 +16,6 @@ st.write('''
     ''')
 st.divider()
 
-# Create a thread label input to be used as file name for the save thread functionality
-file_name = st.text_input('Thread label')
-
 # Initialize 'n' session state if it's not already set
 if 'n' not in st.session_state:
     st.session_state.n = 1
@@ -26,6 +23,11 @@ if 'n' not in st.session_state:
 # Initialize 'thread_content' for each text area's content in the session state if it's not already set
 if 'thread_content' not in st.session_state:
     st.session_state.thread_content = [''] * st.session_state.n 
+
+# Initialize 'thread_label' and create a thread label input to be used as file name
+if 'thread_label' not in st.session_state:
+    st.session_state.thread_label = ''
+st.session_state.thread_label = st.text_input('Thread label', value=st.session_state.thread_label)
 
 # Define functionality for character count
 def display_count(text):
@@ -58,28 +60,32 @@ def add_text_area():
 def update_and_save(i):
     # Update the text in session state from the current input
     st.session_state.thread_content[i] = st.session_state[f't{i+1}']
-
+    
     # Build a saved_thread list
     saved_thread = []
     for n, thread_text in enumerate(st.session_state.thread_content):
-        formatted_text = f'{thread_text}'
-        saved_thread.append(formatted_text)
+        saved_thread.append(thread_text)
 
     # Save the updated thread
-    thread_to_file(file_name, saved_thread)
+    thread_to_file(st.session_state.thread_label, saved_thread)
 
 # Define functionality to save thread to a file
 def thread_to_file(file_name, saved_thread):
-    if not os.path.exists('pages'):
-        os.makedirs('pages')
+    if not os.path.exists('threads'):
+        os.makedirs('threads')
     
-    file_content = f"import streamlit as st\n\nst.title('{file_name}')\n\n"
+    # Page title
+    file_content = f'## {st.session_state.thread_label}\n\n' 
+    
+    # Add thread content to file
     c = 1
     for text in saved_thread:
-        file_content += f"st.write(f'{c}')\nst.write(f'{text}')\n\n"
+        file_content += f'{c}\n\n'
+        file_content += f'{text}\n\n'
         c += 1
     
-    with open(f'pages/{file_name}.py', 'w') as file:
+    # Create new or update existing file
+    with open(f'threads/{file_name}.txt', 'w') as file:
         file.write(file_content)
 
 # Loop through session states to display text areas and dynamically update and save their content to a file
@@ -89,7 +95,6 @@ for i in range(st.session_state.n):
                         key=f't{i+1}', 
                         on_change=update_and_save, 
                         args=(i,))
-
     display_count(st.session_state.thread_content[i])
 
 # Button to add new text area
