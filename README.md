@@ -43,21 +43,13 @@ Regardless of which package management tool you're using, I recommend running th
 
 Remember that this is app runs locally on your computer. 
 
-## Roadmap
-
-### Immediate improvements
-- [X] Save thread using the `text_area` `on_change` variable instead of using the `Save thread` button
-- [X] Character count: add emoji count exception
-- [X] Character count: add URL count exception
-- [X] Add sidemenu navigation for saved threads
-
-### Some limitations
+## Limitations
 * When the thread label is empty and a text area is edited, an empty name `.py` file is created with no warning and subsequent threads following this pattern will replace the content of previous threads with no thread label
 * When the thread label is filled after a text area has been edited, a `thread_label.py` file is created but it won't show in the `Threads` dropdown until a new text area is created or the app is refreshed
 * Since images don't affect the character count, they have been disregarded in this implementation
 
-### Future improvements
-- [X] Saved threads: add remove functionality
+## Roadmap
+- [X] Saved threads: add delete thread functionality
 - [ ] New threads: add change text order functionality
 - [ ] Saved threads: addd editing functionality
 
@@ -69,4 +61,4 @@ Contributions, issues and feature requests are welcome.
 * Github: [@monicazng](https://github.com/monicazng)
 
 ## License
-This project is [GNU GPL v2](https://github.com/monicazng/knittingmachine/LICENSE) licensed.
+This project is [GNU GPL v2](https://github.com/monicazng/knittingmachine/blob/master/LICENSE) licensed.
