@@ -12,7 +12,7 @@ add_tips = st.sidebar.caption('''
     🪡 __Tips__
     * Make sure to enter a thread label to save your progress.
     * Include 'http' or 'https' to URLs to help :orange[Knittingmachine] update the character count correctly.
-    * Navigate to `Threads` to explore your saved threads.
+    * Navigate and delete saved threads from the `Threads` tab.
     ''')
 
 # Initialize 'n' session state if it's not already set
@@ -85,6 +85,12 @@ def thread_to_file(file_name, saved_thread):
     with open(f'threads/{file_name}.txt', 'w') as file:
         file.write(file_content)
 
+# Define functionality to remove the last text area
+def remove_last_text_area():
+    if st.session_state.n > 1:
+        st.session_state.n -= 1
+        st.session_state.thread_content.pop()
+
 # Display text input for thread label
 st.session_state.thread_label = st.text_input('Thread label', value=st.session_state.thread_label, placeholder='Enter a thread label to save your progress.')
 
@@ -97,5 +103,12 @@ for i in range(st.session_state.n):
                         args=(i,))
     display_count(st.session_state.thread_content[i])
 
-# Button to add new text area
-st.button('\+ Text', type='primary', on_click=add_text_area)
+# Buttons to add and remove a text area
+col1, col2 = st.columns([.15,1])
+with col1:
+    st.button('\+ Text', type='primary', on_click=add_text_area)
+
+with col2:
+    if st.button('— Text'):
+        remove_last_text_area()
+        st.rerun()

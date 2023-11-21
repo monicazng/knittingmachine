@@ -6,11 +6,11 @@ A simple, light, and clean UI to write threads — built with Python and Streaml
 I enjoy writing threads more than single posts because it lets me develop storytelling. However, I found the interface of X and third-party applications too distracting for the task. So I decided to use my recently acquired Python skills to build a simple, light, and clean UI to write and save threads locally. As a more-junior-than-junior developer building my first-ever app, expect a very rough code. 
 
 ## Features
-* Automatically save and update your thread as a `thread_label.txt` local file
-* Add subsequent text areas to your thread
+* Label and write threads that get automatically stored in a `thread_label.txt` local file
+* Add and remove text areas from your thread
 * Text areas feature character count with a color warning when you exceed the 280 character limit
-* Character count considers URL and emoji count exceptions
-* Navigate to `Threads` to read and delete saved threads
+* Character count manages URL and emoji count exceptions
+* Navigate and delete saved threads from the `Threads` tab
 
 ## Installing knittingmachine
 
