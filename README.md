@@ -3,7 +3,7 @@
 A simple, light, and clean UI to write threads — built with Python and Streamlit.
 
 ## Motivation
-I enjoy writing threads more than single posts because it lets me develop storytelling. However, I found the interface of X and third-party applications too distrating for the task. So I decided to use my recently acquired Python skills to build a simple, light, and clean UI to write and save threads locally. As a more-junior-than-junior developer building my first-ever app, expect a very rough code. 
+I enjoy writing threads more than single posts because it lets me develop storytelling. However, I found the interface of X and third-party applications too distracting for the task. So I decided to use my recently acquired Python skills to build a simple, light, and clean UI to write and save threads locally. As a more-junior-than-junior developer building my first-ever app, expect a very rough code. 
 
 ## Features
 * Automatically save and update your thread as a `thread_label.txt` local file
@@ -39,6 +39,7 @@ Regardless of which package management tool you're using, I recommend running th
 7. Now you can use Python and Streamlit to run knittingmachine locally!
     
     `streamlit run app.py`
+    
     A new tab in your web browser should pop up running knittingmachine locally!
 
 Remember that this is app runs locally on your computer. 
