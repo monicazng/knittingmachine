@@ -3,18 +3,17 @@ import os
 import re
 
 # Set page configuration
-st.set_page_config(page_icon='🧶', page_title='knittingmachine')
-st.title(':yarn: :orange[knittingmachine]')
+st.set_page_config(page_icon='🧶', page_title='Knittingmachine')
+st.title(':yarn: :orange[Knittingmachine]')
 st.subheader('A simple, light and clean UI to write threads.')
 
 # Create a Tips section for correct formatting
-st.divider()
-st.write('''
+add_tips = st.sidebar.caption('''
     🪡 __Tips__
-    * Replace spaces for '-' or '_' in your thread label to avoid formatting problems when saving your thread as a file
-    * Include 'http' or 'https' to URLs to help :orange[knittingmachine] update the character count correctly
+    * Make sure to enter a thread label to save your progress.
+    * Include 'http' or 'https' to URLs to help :orange[Knittingmachine] update the character count correctly.
+    * Navigate to `Threads` to explore your saved threads.
     ''')
-st.divider()
 
 # Initialize 'n' session state if it's not already set
 if 'n' not in st.session_state:
@@ -27,7 +26,6 @@ if 'thread_content' not in st.session_state:
 # Initialize 'thread_label' and create a thread label input to be used as file name
 if 'thread_label' not in st.session_state:
     st.session_state.thread_label = ''
-st.session_state.thread_label = st.text_input('Thread label', value=st.session_state.thread_label)
 
 # Define functionality for character count
 def display_count(text):
@@ -60,6 +58,7 @@ def add_text_area():
 def update_and_save(i):
     # Update the text in session state from the current input
     st.session_state.thread_content[i] = st.session_state[f't{i+1}']
+    file_name = st.session_state.thread_label.replace(' ', '_')
     
     # Build a saved_thread list
     saved_thread = []
@@ -67,26 +66,27 @@ def update_and_save(i):
         saved_thread.append(thread_text)
 
     # Save the updated thread
-    thread_to_file(st.session_state.thread_label, saved_thread)
+    thread_to_file(file_name, saved_thread)
 
 # Define functionality to save thread to a file
 def thread_to_file(file_name, saved_thread):
+    # Check whether or not a threads/ directory exists
     if not os.path.exists('threads'):
         os.makedirs('threads')
     
     # Page title
-    file_content = f'## {st.session_state.thread_label}\n\n' 
+    file_content = ''
     
     # Add thread content to file
-    c = 1
     for text in saved_thread:
-        file_content += f'{c}\n\n'
         file_content += f'{text}\n\n'
-        c += 1
     
     # Create new or update existing file
     with open(f'threads/{file_name}.txt', 'w') as file:
         file.write(file_content)
+
+# Display text input for thread label
+st.session_state.thread_label = st.text_input('Thread label', value=st.session_state.thread_label, placeholder='Enter a thread label to save your progress.')
 
 # Loop through session states to display text areas and dynamically update and save their content to a file
 for i in range(st.session_state.n):

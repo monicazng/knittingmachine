@@ -26,6 +26,7 @@ def delete_file(file_name):
 # Selectbox to display chosen thread
 selected_file = st.selectbox('Select a file', file_list, index=None)
 if selected_file:
+    st.subheader(f'{selected_file}')
     file_path = os.path.join('threads', selected_file)
     with open(file_path, 'r') as file:
         file_content = file.read()

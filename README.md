@@ -6,9 +6,11 @@ A simple, light, and clean UI to write threads — built with Python and Streaml
 I enjoy writing threads more than single posts because it lets me develop storytelling. However, I found the interface of X and third-party applications too distrating for the task. So I decided to use my recently acquired Python skills to build a simple, light, and clean UI to write and save threads locally. As a more-junior-than-junior developer building my first-ever app, expect a very rough code. 
 
 ## Features
+* Automatically save and update your thread as a `thread_label.txt` local file
 * Add subsequent text areas to your thread
 * Text areas feature character count with a color warning when you exceed the 280 character limit
-* Automatically save and update your thread as a `thread_label.txt` local file
+* Character count considers URL and emoji count exceptions
+* Navigate to `Threads` to read and delete saved threads
 
 ## Installing knittingmachine
 
@@ -47,12 +49,17 @@ Remember that this is app runs locally on your computer.
 - [X] Save thread using the `text_area` `on_change` variable instead of using the `Save thread` button
 - [X] Character count: add emoji count exception
 - [X] Character count: add URL count exception
-- [ ] Add sidemenu navigation for saved threads
+- [X] Add sidemenu navigation for saved threads
+
+### Some limitations
+* When the thread label is empty and a text area is edited, an empty name `.py` file is created with no warning and subsequent threads following this pattern will replace the content of previous threads with no thread label
+* When the thread label is filled after a text area has been edited, a `thread_label.py` file is created but it won't show in the `Threads` dropdown until a new text area is created or the app is refreshed
+* Since images don't affect the character count, they have been disregarded in this implementation
 
 ### Future improvements
-- [ ] Multipage: turn knittingmachine on a multipage app where each saved thread is a page instead of a `.txt` file
-- [ ] Saved threads: add editing and remove functionality
-- [ ] Saved threads: add change text order functionality
+- [X] Saved threads: add remove functionality
+- [ ] New threads: add change text order functionality
+- [ ] Saved threads: addd editing functionality
 
 ## Contributions
 Contributions, issues and feature requests are welcome.
