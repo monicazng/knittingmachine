@@ -104,11 +104,11 @@ for i in range(st.session_state.n):
     display_count(st.session_state.thread_content[i])
 
 # Buttons to add and remove a text area
-col1, col2 = st.columns([.15,1])
+col1, col2 = st.columns([.08,1])
 with col1:
-    st.button('\+ Text', type='primary', on_click=add_text_area)
+    st.button(':white[__＋__]', type='primary', on_click=add_text_area)
 
 with col2:
-    if st.button('— Text'):
+    if st.button(':white[__—__]'):
         remove_last_text_area()
         st.rerun()

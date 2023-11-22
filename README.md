@@ -1,27 +1,27 @@
-# 🧶 knittingmachine <img alt="Python: 3.11" src="https://img.shields.io/badge/python-3.11-blue.svg" target="_blank"/> <img alt="License: GNU GPL v2" src="https://img.shields.io/badge/license-GNU_GPL_v2-blue.svg" target="_blank"/>
+# 🧶 Knittingmachine <img alt="Python: 3.11" src="https://img.shields.io/badge/python-3.11-blue.svg" target="_blank"/> <img alt="License: GNU GPL v2" src="https://img.shields.io/badge/license-GNU_GPL_v2-blue.svg" target="_blank"/>
 
 A simple, light, and clean UI to write threads — built with Python and Streamlit.
 
 ## Motivation
-I enjoy writing threads more than single posts because it lets me develop storytelling. However, I found the interface of X and third-party applications too distracting for the task. So I decided to use my recently acquired Python skills to build a simple, light, and clean UI to write and save threads locally. As a more-junior-than-junior developer building my first-ever app, expect a very rough code. 
+I've always preferred the depth and narrative flow of threads over single posts. However, the existing interfaces and third-party apps felt too cluttered and distracting for this purpose. This led me to test my newly acquired Python skills into creating a simple, clean, and intuitive UI for writing and managing threads. Bear in mind, the code may be a bit unpolished, but it's a genuine reflection of my learning journey building my first app!
 
 ## Features
-* Label and write threads that get automatically stored in a `thread_label.txt` local file
+* Label and write threads that auto-save in a `thread_label.txt` local file
 * Add and remove text areas from your thread
 * Text areas feature character count with a color warning when you exceed the 280 character limit
 * Character count manages URL and emoji count exceptions
 * Navigate and delete saved threads from the `Threads` tab
 
-## Installing knittingmachine
+## Installing Knittingmachine
 
 ### Prerequisits
 * [Python 3.11](https://www.python.org/downloads/)
 * [Streamlit](https://docs.streamlit.io/library/get-started/installation)
 
 ### Set up your environment
-Regardless of which package management tool you're using, I recommend running the commands on this page in a virtual environment. This ensures that the dependencies pulled in for knittingmachine don't impact any other Python projects you're working on.
+Regardless of which package management tool you're using, I recommend running the commands on this page in a virtual environment. This ensures that the dependencies pulled in for Knittingmachine don't impact any other Python projects you're working on.
 
-### Install and run knittingmachine
+### Install and run Knittingmachine
 1. Navigate to your project directory:
 
     `cd your_project_directory`
@@ -33,14 +33,14 @@ Regardless of which package management tool you're using, I recommend running th
     
     `streamlit hello`
 5. Streamlit's Hello app should appear in a new tab in your web browser! To stop the Streamlit server, press ctrl-C.
-6. Create a local [clone](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) of knittingmachine to your project directory:
+6. Create a local [clone](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) of Knittingmachine to your project directory:
     
     `git clone https://github.com/monicazng/knittingmachine`
-7. Now you can use Python and Streamlit to run knittingmachine locally!
+7. Now you can use Python and Streamlit to run Knittingmachine locally!
     
     `streamlit run app.py`
     
-    A new tab in your web browser should pop up running knittingmachine locally!
+    A new tab in your web browser should pop up running Knittingmachine locally!
 
 Remember that this is app runs locally on your computer. 
 
